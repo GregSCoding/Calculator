@@ -22,9 +22,17 @@ height: 40px;
 border: 2px solid black;
 border-radius: 8px;
 margin-bottom: 10px;
+display: flex;
+justify-content: end;
+align-items: center;
+padding: 5px;
+font-weight: bold;
+font-size: 25px;
 
 }
-.elem{
+.elem,
+.number,
+.operator{
   border: 2px solid black;
   border-radius: 8px;
   flex-grow: 1;
