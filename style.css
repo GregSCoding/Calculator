@@ -4,9 +4,12 @@
   height: auto;
   width: 260px;
   padding: 20px;
-  background-color: rgb(209, 209, 125);
+  background-color: rgb(221, 221, 66);
   display: flex;
   flex-direction: column;
+}
+html{
+  background-color: grey;
 }
 
 body{
@@ -23,12 +26,13 @@ body{
 }
 
 #display{
-background-color: rgb(199, 252, 109);
+background-color: rgb(170, 233, 61);
 height: 80px;
 border: 2px solid black;
 border-radius: 8px;
 margin-bottom: 10px;
 display: flex;
+flex-wrap: wrap;
 justify-content: end;
 align-items: center;
 padding: 5px;
@@ -63,4 +67,12 @@ font-size: 25px;
   display: flex;
   gap: 5px;
   justify-content: center;
+}
+
+.function:hover,
+.elem:hover,
+.number:hover,
+.operator:hover{
+  background-image: linear-gradient(rgb(0 0 0/20%) 0 0);
+
 }

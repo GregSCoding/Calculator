@@ -10,11 +10,30 @@ operatorBtns.forEach(element => {
 });
 dotBtn = document.getElementById("dot");
 buttons = document.querySelectorAll("button");
+clearBtn = document.getElementById("clear");
+deleteBtn = document.getElementById("delete");
+deleteBtn.addEventListener("click", deletedgt)
+clearBtn.addEventListener("click", clear);
 buttons.forEach((elem) => elem.addEventListener("transitionend" ,removeTransition));
 
 let operators = [];
 let operands = [];
 let operand = [];
+function deletedgt(event){
+  event.target.classList.add("pressed");
+  operand.pop();
+  if(!operand.length){
+    display.textContent = 0;
+  }else{
+    display.textContent = operand.join("");
+  }  
+}
+
+function clear(event){
+  clearCache();
+  display.textContent = "0";
+  event.target.classList.add("pressed");
+}
 
 function removeTransition(event){
   if (event.propertyName !== "transform") return;
@@ -23,11 +42,13 @@ function removeTransition(event){
 
 function addDigit(event){
   event.target.classList.add("pressed");
-  operand.push(event.target.textContent);
-  if(event.target.textContent === "."){
-    dotBtn.disabled = true;
+  if(operand.length<=17){
+    operand.push(event.target.textContent);
+    if(event.target.textContent === "."){
+      dotBtn.disabled = true;
+    }
+    display.textContent = operand.join("");
   }
-  display.textContent = operand.join("");
 }
 
 function selectOperator(event){
@@ -37,7 +58,9 @@ function selectOperator(event){
   dotBtn.disabled = false;
   operands.push(operand);
   if(operator ==="EQUALS"){
-    display.textContent = evaluateExpression(operands, operators);
+    result = evaluateExpression(operands, operators).toFixed(4);
+    if(result.toString().length >= 18) result = "Too big result";
+    display.textContent = result;
     clearCache();
     return;
   }
